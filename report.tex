@@ -2,7 +2,6 @@
 \usepackage{nips15submit_e,times}
 \usepackage{hyperref}
 \usepackage{url}
-%\documentstyle[nips14submit_09,times,art10]{article} % For LaTeX 2.09
 
 
 \title{Activity Recognition Analysis for Discriminating Weight Lifting Exercises}
@@ -70,49 +69,43 @@ TODO: workflow figure
 
 Other than study the three key components of qualitative activity recognition, we conducted our experiment in a different perspective to explore the breadth of classification algorithms. Our study focuses on analyzing different classification results conducted by different classification models. Our ultimate goal is to be able to distinguish correct activities as well as different wrong activities.
 
-\section{General formatting instructions}
-\label{gen_inst}
+\section{Approach}
 
-The text must be confined within a rectangle 5.5~inches (33~picas) wide and
-9~inches (54~picas) long. The left margin is 1.5~inch (9~picas).
-Use 10~point type with a vertical spacing of 11~points. Times New Roman is the
-preferred typeface throughout. Paragraphs are separated by 1/2~line space,
-with no indentation.
+\subsection{Data Pre-processing}
 
-Paper title is 17~point, initial caps/lower case, bold, centered between
-2~horizontal rules. Top rule is 4~points thick and bottom rule is 1~point
-thick. Allow 1/4~inch space above and below title to rules. All pages should
-start at 1~inch (6~picas) from the top of the page.
+Our dataset contains 152 dimensions and 39422 instances. The data pre-processing stage includes transforming categorical data into numerical data, filling and removing sparse data cells, normalizing data, and reducing dimensions. Sparse cells were filled with their corresponding statistical data, such as min, max, mean, and variance. All the numerical data was normalized to have mean zero 0 and covariance 1. Moreover, feature exaction was handled by Principal Component Analysis (PCA) to reduce the dimensions. After we pre-processed the data, the data was reduced to 50 dimensions other than 152.
 
-%The version of the paper submitted for review should have ``Anonymous Author(s)'' as the author of the paper.
+\subsection{Training Algorithms}
 
-For the final version, authors' names are
-set in boldface, and each name is centered above the corresponding
-address. The lead author's name is to be listed first (left-most), and
-the co-authors' names (if different address) are set to follow. If
-there is only one co-author, list both author and co-author side by side.
+Our training approaches are based on sklearn library written in Python. In this section we will discuss different training algorithms we applied in our project. The following table should provide a general overview about our approaches.
 
-Please pay special attention to the instructions in section \ref{others}
-regarding figures, tables, acknowledgments, and references.
+\subsubsection{Random Assignment}
 
-\section{Headings: first level}
-\label{headings}
+In this approach, we assign a data instance to a random class. Every class has equal probability to be assigned to. Since we have five classes in total, this means every class has 20\% probability to be assigned to. However, as we already know that the distributions of different classes in our data set are different, we do not expect high performance from it. Instead, we will only use it as a benchmark for comparison.
 
-First level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 12. One line space before the first level
-heading and 1/2~line space after the first level heading.
+\subsubsection{Random Assignment I}
 
-\subsection{Headings: second level}
+In our second randomized approach, we also assign a data instance to a class randomly. However, unlike the first random approach, we take the original distribution of different classes in our training data set into considerations. That means different classes have different probabilities to be assigned to. For example, Class 0 is 27.9\% of  training data, therefore, for a testing data instance, it has 27.9\% possibility to be assigned to Class 0. The rest four classes’ possibilities follow the same idea.
 
-Second level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 10. One line space before the second level
-heading and 1/2~line space after the second level heading.
+\subsubsection{Random Assignment II}
 
-\subsubsection{Headings: third level}
+Our third randomized approach is rather simple comparing the previous two. In this approach, we blindly assign all the testing instances to Class 0, which has the highest frequency in the entire data set. Hence, the performance of this approach is within a predictable range. With the test cases we randomly selected for existing subjects, both the semi raw data and the normalized data have 28.63\% accuracy. For new subject, the accuracy rate is 33.56\%.
 
-Third level headings are lower case (except for first word and proper nouns),
-flush left, bold and in point size 10. One line space before the third level
-heading and 1/2~line space after the third level heading.
+\subsubsection{Baseline}
+
+In baseline approach, we applied an algorithm which borrows the idea of k nearest neighbour. We use all of our training data to generate five centers of  five classes. For the testing instances, we assignment them to the class with the closest center to them.
+
+\subsubsection{K Nearest Neighbours}
+
+In this training algorithm, we assign a testing instance to a class based on its K nearest neighbours. Among the K nearest neighbours, we find the class, which most of the training instances belong to, then assign the testing instance to that class. In terms of choice of K, we have tried multiple values, among which we found that the square root of total amount of training data gives the best outcome. This specific comes from one of our team members’ previous project experience.
+
+\subsubsection{Parzen-Window}
+
+Parzen-Window approach has very similar idea to K nearest neighbours approach, but also slightly different from it. In parzen-window approach, we focus more on the density of data instances around the testing data. In this case, we exam an area instead of a certain number of neighbours. After we decide the radius of the area we should be looking at, we pick the class that has majority number of instances within that area and assign our testing data to that class. That being said, with different settings of radius R, assignment of classes could be quite different. It is also possible that certain data instance does not have any training data instance within R. Therefore, we will have outliers. In this project and for this approach, we set all outliers to be Class 0, which is the major class in our training data.
+
+\subsubsection{Perceptron and SVM}
+
+In this project, we also included basic machine learning algorithms, such as perceptron and SVM. Since the training phase is based on sklearn package in Python, we used the library’s perceptron and SVM functions. For perceptron, instead of using default 5 times of passes over the training data, we set n\_iter to 1000 and left the rest arguments as default. For SVM, we set the kernel argument as linear instead of the default rbf setting.
 
 \section{Citations, figures, tables, references}
 \label{others}
