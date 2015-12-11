@@ -3,6 +3,7 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{float}
 
 
 \title{Activity Recognition Analysis for Discriminating Weight Lifting Exercises}
@@ -121,7 +122,7 @@ As being said before, we tried to pre-process the data using PCA. We did tests o
 
 \subsection{Existing Subject}
 
-\begin{table}[t]
+\begin{table}[H]
 \caption{Accuracy for Existing Subject}
 \begin{center}
 \begin{tabular}{lll}
@@ -142,6 +143,24 @@ As being said before, we tried to pre-process the data using PCA. We did tests o
 \subsection{New Subject}
 
 In real life scenario, we may not have any knowledge about the test subject. To gather more realistic results, we did two sets of tests. The first dataset (denoted as \texttt{new}) was to simulate a new test subject. The second dataset (denoted as \texttt{existing})  was to simulate an existing test subject, of which we have already learnt from previous data.
+
+\begin{table}[H]
+\caption{Accuracy for New Subject}
+\begin{center}
+\begin{tabular}{lll}
+{\bf Method} & {\bf Accuracy Rate} & {\bf Accuracy Rate (PCA)} \\
+\hline \\
+{\bf RA}       & 20.66\% & 19.77\% \\
+{\bf RA1}      & 21.11\% & 19.79\% \\
+{\bf RA2}      & 33.56\% & 33.56\% \\
+{\bf baseline} & 51.71\% & 69.54\% \\
+{\bf percep}   & 30.38\% & 42.80\% \\
+{\bf par}      & 48.94\% & 50.77\% \\
+{\bf knn}      & 53.25\% & 51.36\% \\
+{\bf svm}      & N/A     & 40.36\% \\
+\end{tabular}
+\end{center}
+\end{table}
 
 \subsection{Reduce Amount of Sensors}
 
