@@ -54,7 +54,7 @@ Burnaby, BC, Canada V5A 1S6 \\
 \maketitle
 
 \begin{abstract}
-Activity recognition has been traditionally focusing on identification of different activities. Our research is focusing on analyzing quality of executing certain activities.
+Activity recognition has been traditionally focusing on identification of different activities. Our research is focusing on analyzing quality of executing certain activities. We gathered data from sensors while doing weight lifting exercises. We performed different learning algorithms to analyze the quality of activities.
 \end{abstract}
 
 \section{Introduction}
@@ -118,9 +118,13 @@ In this project, we also included basic machine learning algorithms, such as per
 
 \section{Experiments}
 
-As being said before, we tried to pre-process the data using PCA. We did tests on both datasets with and without PCA.
+We used 8 different approaches for experiments, namely Random Assignment (denoted as \texttt{RA}), Random Assignment I (denoted as \texttt{RA1}), Random Assignment II (denoted as \texttt{RA2}), Baseline (denoted as \texttt{baseline}), K Nearest Neighbours (denoted as \texttt{knn}), Parzen-Window (denoted as \texttt{par}), Perceptron (denoted as \texttt{percep}), and SVM (denoted as \texttt{svm}).
+
+We tried different data preprocessing techniques and approaches. As being said before, we tried to pre-process the data using PCA. We did tests on both datasets with and without being processed by PCA.
 
 \subsection{Existing Subject}
+
+In the first set of experiments, we randomly selected 1/10 of data as testing data. Therefore, this dataset was to simulate an existing test subject, of which we have already learnt from.
 
 \begin{table}[H]
 \caption{Accuracy for Existing Subject}
@@ -140,9 +144,12 @@ As being said before, we tried to pre-process the data using PCA. We did tests o
 \end{center}
 \end{table}
 
+As can be seen in the table, the best result we have for existing subject is 98.30\%.
+
+
 \subsection{New Subject}
 
-In real life scenario, we may not have any knowledge about the test subject. To gather more realistic results, we did two sets of tests. The first dataset (denoted as \texttt{new}) was to simulate a new test subject. The second dataset (denoted as \texttt{existing})  was to simulate an existing test subject, of which we have already learnt from previous data.
+In real life scenario, we may not have any knowledge about the test subject. To gather more realistic results, we removed all the data for a certain subject in the training dataset. We used the data for that certain subject as testing data.  
 
 \begin{table}[H]
 \caption{Accuracy for New Subject}
@@ -162,7 +169,9 @@ In real life scenario, we may not have any knowledge about the test subject. To 
 \end{center}
 \end{table}
 
-\subsection{Reduce Amount of Sensors}
+As can be seen in the table, the best result we have for new subject is 69.45\%.
+
+\subsection{Reducing Amount of Sensors}
 
 TODO
 
