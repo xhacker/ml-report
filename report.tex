@@ -129,17 +129,17 @@ In the first set of experiments, we randomly selected 1/10 of data as testing da
 \begin{table}[H]
 \caption{Accuracy for Existing Subject}
 \begin{center}
-\begin{tabular}{lll}
-{\bf Method} & {\bf Accuracy Rate} & {\bf Accuracy Rate (PCA)} \\
-\hline \\
-{\bf RA}       & 19.95\% & 19.84\% \\
-{\bf RA1}      & 20.04\% & 21.20\% \\
-{\bf RA2}      & 28.63\% & 28.63\% \\
-{\bf baseline} & 55.34\% & 67.29\% \\
-{\bf percep}   & 91.20\% & 62.54\% \\
-{\bf par}      & 98.15\% & 98.30\% \\
-{\bf knn}      & 85.86\% & 85.73\% \\
-{\bf svm}      & N/A     & 83.45\% \\
+\begin{tabular}{l||ll|ll}
+{\bf Method} & {\bf Correct Predictions} & {\bf Accuracy Rate} & {\bf Correct Predictions (PCA)} & {\bf Accuracy Rate (PCA)} \\
+\hline &&&& \\
+{\bf RA}       &  646 / 3238 & 19.95\% &  624 / 3238 & 19.27\% \\
+{\bf RA1}      &  649 / 3238 & 20.04\% &  693 / 3238 & 21.40\% \\
+{\bf RA2}      &  927 / 3238 & 28.63\% &  927 / 3238 & 28.63\% \\
+{\bf baseline} & 1792 / 3238 & 55.34\% & 2179 / 3238 & 67.29\% \\
+{\bf percep}   & 2953 / 3238 & 91.20\% & 2025 / 3238 & 62.54\% \\
+{\bf par}      & 3178 / 3238 & 98.15\% & 3183 / 3238 & 98.30\% \\
+{\bf knn}      & 2780 / 3238 & 85.86\% & 2776 / 3238 & 85.73\% \\
+{\bf svm}      &     N/A     &     N/A & 2702 / 3238 & 83.45\% \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -163,17 +163,17 @@ In real life scenario, we may not have any knowledge about the test subject. To 
 \begin{table}[H]
 \caption{Accuracy for New Subject}
 \begin{center}
-\begin{tabular}{lll}
-{\bf Method} & {\bf Accuracy Rate} & {\bf Accuracy Rate (PCA)} \\
-\hline \\
-{\bf RA}       & 20.66\% & 19.77\% \\
-{\bf RA1}      & 21.11\% & 19.79\% \\
-{\bf RA2}      & 33.56\% & 33.56\% \\
-{\bf baseline} & 51.71\% & 69.54\% \\
-{\bf percep}   & 30.38\% & 42.80\% \\
-{\bf par}      & 48.94\% & 50.77\% \\
-{\bf knn}      & 53.25\% & 51.36\% \\
-{\bf svm}      & N/A     & 40.36\% \\
+\begin{tabular}{l||ll|ll}
+{\bf Method} & {\bf Correct Predictions} & {\bf Accuracy Rate} & {\bf Correct Predictions (PCA)} & {\bf Accuracy Rate (PCA)} \\
+\hline &&&& \\
+{\bf RA}       & 1417 / 6859 & 20.66\% & 1356 / 6859 & 19.77\% \\
+{\bf RA1}      & 1448 / 6859 & 21.11\% & 1357 / 6859 & 19.79\% \\
+{\bf RA2}      & 2302 / 6859 & 33.56\% & 2302 / 6859 & 33.56\% \\
+{\bf baseline} & 3457 / 6859 & 51.71\% & 4770 / 6859 & 69.54\% \\
+{\bf percep}   & 2084 / 6859 & 30.38\% & 2936 / 6859 & 42.80\% \\
+{\bf par}      & 3357 / 6859 & 48.94\% & 3842 / 6859 & 50.77\% \\
+{\bf knn}      & 3652 / 6859 & 53.25\% & 3523 / 6859 & 51.36\% \\
+{\bf svm}      &     N/A     &     N/A & 2768 / 6859 & 40.36\% \\
 \end{tabular}
 \end{center}
 \end{table}
@@ -196,7 +196,7 @@ As can be seen in the table, the best result we have for new subject is 69.45\%.
 \section{Conclusion}
 
 Based on our experiment, the maximum accuracy rate we could get for existing subject is 98.30\% and for new subject is 69.45\%, which is really good given the fact that the model does not need any knowledge about the new subject before hand.
-In real life scenario, since health is one of the largest focuses in wearable smart device industry, companies like Fitbit or Jawbone could train such a model beforehand and provide their users with further services such as workout quality evaluations and wrong gesture warnings to encourage good exercise as well as to prevent injuries.
+In real life scenario, since health is one of the largest focuses in wearable smart device industry, companies like Fitbit or Jawbone could train such a model beforehand and provide their users with further services such as workout quality evaluations and wrong gesture warnings to encourage good exercise as well as to prevent injuries.
 
 \subsubsection*{Contributions}
 
