@@ -124,7 +124,7 @@ We tried different data preprocessing techniques and approaches. As being said b
 
 \subsection{Existing Subject}
 
-In the first set of experiments, we randomly selected 1/10 of data as testing data. Therefore, this dataset was to simulate an existing test subject, of which we have already learnt from.
+In the first set of experiments, we randomly selected 1/10 of rows in the dataset as the testing dataset. Therefore, this dataset was to simulate an existing test subject, of which we have already learnt from.
 
 \begin{table}[H]
 \caption{Accuracy for Existing Subject}
@@ -158,7 +158,7 @@ As can be seen in the table, the best result we have for existing subject is 98.
 
 \subsection{New Subject}
 
-In real life scenario, we may not have any knowledge about the test subject. To gather more realistic results, we removed all the data for a certain subject in the training dataset. We used the data for that certain subject as testing data.  
+In real life scenario, we may not have any knowledge about the test subject. To gather more realistic results, we left one person out, removed all the data for a certain subject in the training dataset. We used the data for that certain subject as testing data.  
 
 \begin{table}[H]
 \caption{Accuracy for New Subject}
@@ -196,7 +196,8 @@ As can be seen in the table, the best result we have for new subject is 69.45\%.
 \section{Conclusion}
 
 Based on our experiment, the maximum accuracy rate we could get for existing subject is 98.30\% and for new subject is 69.45\%, which is really good given the fact that the model does not need any knowledge about the new subject before hand.
-In real life scenario, since health is one of the largest focuses in wearable smart device industry, companies like Fitbit or Jawbone could train such a model beforehand and provide their users with further services such as workout quality evaluations and wrong gesture warnings to encourage good exercise as well as to prevent injuries.
+
+In real life scenario, since health is one of the largest focuses in wearable smart device industry, companies like Fitbit or Jawbone could train such a model beforehand and provide their users with further services such as workout quality evaluations and wrong gesture warnings to encourage good exercise as well as to prevent injuries. We also realized that it would be unrealistic to wear all the sensors in real life. To be more practical, in future research, it would be helpful to gather data for a less amount of sensors.
 
 \subsubsection*{Contributions}
 
